@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <title>MIT-Massachusetts Institute of Technology</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Styles de base pour le corps de la page */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+    
+        /* Styles de l'en-tête */
+        header {
+            background-color: #720404;
+            color: white;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+    
+        /* Conteneur de l'en-tête */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-grow: 1;
+            
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    
+        /* Style du logo */
+        .logo img {
+            width: 190px;
+            height: auto;
+            margin-bottom: 0;
+        }
+    
+        /* Style du menu hamburger */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 30px;
+            color: white;
+            
+        }
+    
+        /* Styles de la barre de navigation */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+    
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+    
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+        }
+    
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+    
+        /* Styles pour l'affichage du menu hamburger sur petit écran */
+        @media (max-width: 768px) {
+            .container {
+                justify-content: space-between; /* Garder l'espacement entre le logo et le hamburger */
+            }
+    
+            .logo img {
+                width: 180px; /* Réduire la taille du logo sur petits écrans */
+            }
+    
+            .menu-toggle {
+                display: block; /* Afficher le hamburger sur petit écran */
+                margin-left: 120px; /* Espace maximal de 200px entre le logo et le hamburger */
+            }
+    
+            nav {
+                display: none; /* Masquer le menu par défaut sur petit écran */
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                background-color: #750505;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                left: 0;
+                padding: 20px 0;
+            }
+    
+            nav.active {
+                display: flex; /* Afficher le menu lorsque "active" */
+            }
+    
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+    
+            nav a {
+                padding: 15px;
+            }
+    
+            /* Réduire l'image d'accueil sur petits écrans */
+            .hero {
+                padding: 30px 20px; /* Réduire les espaces internes */
+                background-size: cover; /* Adapter l'image à la taille de l'écran */
+                background-position: center; /* Centrer l'image */
+            }
+    
+            .hero img {
+                width: 70%; /* Réduire la taille de l'image pour occuper toute la largeur de l'écran */
+                height: auto;
+            }
+        }
+    
+        /* Section Hero */
+        /* Hero Section Style */
+     /* Hero Section Style */
+     .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url('hero3.jpg'); /* Remplacez 'background.jpg' par votre propre image */
+        background-size: cover;  /* S'assure que l'image couvre toute la section */
+        background-position: center;  /* Centre l'image */
+        background-attachment: fixed;  /* L'image reste en place lors du défilement */
+        color: rgba(77, 5, 5, 0.911);
+        text-align: center;
+        font-family: 'Arial', sans-serif;
+        padding: 20px;
+        opacity: 0;
+        animation: fadeInHero 2s forwards;
+    }
+    /* Hero Title Animation */
+    .hero-title {
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+        transform: translateY(-50px);
+        opacity: 0;
+        animation: slideInHeroTitle 1.5s 0.5s forwards, fadeInText 2s 1s forwards;
+    }
+
+    /* Buttons Animation */
+    .buttons {
+        display: flex;
+        gap: 20px;
+        opacity: 0;
+        animation: fadeInButtons 1s 2s forwards;
+    }
+
+    .btn {
+        background-color: #ff6700;
+        color: white;
+        text-decoration: none;
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+        transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        transform: scale(1.1);
+        background-color: #ff3b00;
+    }
+
+    /* Animation for Hero Section Fade In */
+    @keyframes fadeInHero {
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Hero Title Slide-In Animation */
+    @keyframes slideInHeroTitle {
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Fade In Text */
+    @keyframes fadeInText {
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Buttons Fade In */
+    @keyframes fadeInButtons {
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Button Hover Effect */
+    .btn:active {
+        transform: scale(0.95);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+        .about {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            font-family: 'Georgia', serif;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+    
+        .about-content {
+            max-width: 600px;
+            padding-right: 40px;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideIn 1s 0.5s forwards;
+        }
+    
+        .about-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeIn 1s 0.5s forwards;
+        }
+    
+        .about-description {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #555;
+            opacity: 0;
+            animation: fadeIn 1s 1s forwards;
+        }
+    
+        .about-image {
+            max-width: 600px;
+            flex: 1;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s 0.5s forwards;
+        }
+    
+        .about-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transform: scale(0.9);
+            animation: scaleUp 1s 1s forwards;
+        }
+    
+        /* Fade in animation */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    
+        /* Slide-in animation for content */
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    
+        /* Slide-up animation for image */
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        /* Scale-up animation for image */
+        @keyframes scaleUp {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+    
+            .about-content {
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+    
+            .about-img {
+                width: 90%;
+                max-width: 500px;
+            }
+        }
+       /* Styles de la section Programs */
+    .programs {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: #f8f8f8;
+        color: #333;
+    }
+
+    .programs h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 30px;
+        opacity: 0;
+        animation: fadeInUp 1.5s forwards;
+    }
+
+    .program-list {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 20px;
+        opacity: 0;
+        animation: fadeInUp 2s forwards;
+    }
+
+    .program {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 280px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        animation: fadeInUp 2s forwards;
+        transform: translateY(50px); /* Initial position for animation */
+    }
+
+    .program img {
+        width: 100%;
+        border-radius: 8px;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .program h3 {
+        font-size: 1.8rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .program p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #555;
+    }
+
+    /* Animation for fade-in effect */
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Hover effect for program cards */
+    .program:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Hover effect for images */
+    .program img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Animation delays for each program */
+    .program:nth-child(1) {
+        animation-delay: 1s;
+    }
+
+    .program:nth-child(2) {
+        animation-delay: 1.2s;
+    }
+
+    .program:nth-child(3) {
+        animation-delay: 1.4s;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .program-list {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    
+        /* Styles de la section Testimonials */
+    .testimonials {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: #f8f8f8;
+        color: #333;
+    }
+
+    .testimonials h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+        opacity: 0;
+        animation: fadeInUp 1.5s forwards;
+    }
+
+    .testimonial-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 30px;
+        opacity: 0;
+        animation: fadeInUp 2s forwards;
+    }
+
+    blockquote {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 280px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        animation: fadeInUp 2s forwards;
+        transform: translateY(50px); /* Initial position for animation */
+    }
+
+    .testimonial-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
+    }
+
+    blockquote div {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        color: #555;
+    }
+
+    footer {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    /* Animation for fade-in effect */
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Hover effect for testimonials */
+    blockquote:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Hover effect for images */
+    .testimonial-image:hover {
+        transform: scale(1.1);
+    }
+
+    /* Animation delays for each testimonial */
+    blockquote:nth-child(1) {
+        animation-delay: 1s;
+    }
+
+    blockquote:nth-child(2) {
+        animation-delay: 1.2s;
+    }
+
+    blockquote:nth-child(3) {
+        animation-delay: 1.4s;
+    }
+
+    blockquote:nth-child(4) {
+        animation-delay: 1.6s;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .testimonial-container {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #720707;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo2.png" alt="Logo">
+            </div>
+            <div class="menu-toggle" id="menuToggle">☰</div>
+            <nav id="navbar">
+                <ul>
+                    <li><a href="#">Education</a></li>
+                    <li><a href="#">Research</a></li>
+                    <li><a href="#">innovation</a></li>
+                    <li><a href="#">Admissions+Aid</a></li>
+                    <li><a href="#">CampusLife</a></li>
+                    <li><a href="#">Alumni</a></li>
+                    <li><a href="#">AboutMIT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1 class="hero-title">MIT <br>Massachusetts Institute of Technology</h1>
+            
+            <div class="buttons">
+                <a href="admission.html" class="btn admission">Demande d'Admission</a>
+                <a href="admission.html" class="btn scholarship">Demande de Bourse</a>
+            </div>
+        </section>
+        <!-- Other content sections -->
+       
+
+        <section class="about">
+            <div class="about-content">
+                <h2 class="about-title">About Us</h2>
+                <h3 class="about-description">
+                    The Massachusetts Institute of Technology is a world-renowned institution committed to advancing knowledge and innovation, shaping the leaders of tomorrow in the fields of science, engineering, and technology to transform the world of the future.
+                </h3>
+            </div>
+            <div class="about-image">
+                <img src="about.jpg" alt="About the university" class="about-img">
+            </div>
+        </section>
+
+        <section class="programs">
+            <h2>Nos Programmes</h2>
+            <div class="program-list">
+                <div class="program">
+                    <img src="science.jpeg" alt="Arts et sciences">
+                    <h3>Arts et Sciences des Médias</h3>
+                    <p>Plongez dans l'intersection de la créativité et de la technologie avec nos programmes innovants en Art et Sciences des Médias. Développez des compétences en design interactif, médias numériques et technologies émergentes pour façonner l'avenir de la communication et de l'expérience humaine. Explorez de nouvelles façons d'interagir avec le monde à travers les arts, les médias et la technologie.</p>
+                </div>
+                <div class="program">
+                    <img src="ai.jpg" alt="Ingénierie">
+                    <h3>Intelligence Artificielle</h3>
+                    <p>Explorez le futur de la technologie avec nos programmes en Intelligence Artificielle. Apprenez à développer des systèmes intelligents capables de résoudre des problèmes complexes, de comprendre le langage humain, et d'imiter les processus cognitifs. Que ce soit en machine learning, en robotique, ou en traitement du langage naturel, vous serez formé pour repousser les limites de ce domaine en pleine évolution.</p>
+                </div>
+                <div class="program">
+                    <img src="robot.jpg" alt="Sciences Sociales">
+                    <h3>Ingénierie et robotique</h3>
+                    <p>Plongez dans l'univers de la robotique et explorez la conception, la programmation et l'application des robots dans divers domaines. À travers nos programmes spécialisés, vous apprendrez à intégrer l'intelligence artificielle, les systèmes mécaniques et les technologies de capteurs pour créer des robots autonomes et interactifs. Développez des compétences pratiques pour innover dans des secteurs allant de la fabrication à la santé, et participez à la transformation numérique des industries avec des solutions robotique avancées.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="testimonials">
+            <h2>Témoignages</h2>
+            <div class="testimonial-container">
+                <blockquote>
+                    <img class="testimonial-image" src="F1.jpg" alt="Alice Dupont - Photo de profil">
+                    <div>
+                        "Étudier au MIT a été un tournant dans ma vie. L'approche innovante et la collaboration avec des chercheurs de classe mondiale m'ont permis de repousser mes limites et d'acquérir des compétences uniques qui m'ont préparée à un avenir brillant."
+                       
+                        <footer> — Alice Dupont, Étudiante en Ingénierie</footer>
+                    </div>
+                </blockquote>
+                <blockquote>
+                    <img class="testimonial-image" src="M2.jpg" alt="Marc Tremblay - Photo de profil">
+                    <div>
+                        "Le MIT m'a offert des opportunités exceptionnelles pour développer mes compétences en recherche et en innovation. Les projets pratiques et la culture collaborative sont inégalés, et chaque jour est une occasion d'apprendre et de créer."
+
+                        <footer>— Marc Tremblay, Étudiant en Sciences Informatiques</footer>
+                    </div>
+                </blockquote>
+                <blockquote>
+                    <img class="testimonial-image" src="F2.jpg" alt="Sophie Martin - Photo de profil">
+                    <div>
+                        "L'environnement d'apprentissage au MIT est stimulant, avec des ressources incroyables et des mentors dévoués. Ce qui m'a vraiment impressionnée, c'est la passion de chaque étudiant pour son domaine, créant ainsi une atmosphère d'excellence et de créativité."
+
+                        <footer>— Sophie Martin, Étudiante en Biotechnologie</footer>
+                    </div>
+                </blockquote>
+                <blockquote>
+                    <img class="testimonial-image" src="M1.jpg" alt="Hugo Bernard - Photo de profil">
+                    <div>
+                        "Le MIT ne se contente pas de former des experts, il forme des leaders. L'influence de la recherche interdisciplinaire et les discussions avec des professeurs et des collègues talentueux m'ont permis d'élargir mes horizons et de voir des solutions innovantes aux défis mondiaux."
+                        
+                        <footer>— John Stephenson, Étudiant en Économie et Technologie</footer>
+                    </div>
+                </blockquote>
+            </div>
+        </section>
+    </main>
+
+
+    </main>
+
+    <footer>
+        <p>© 2024 MIT-Massachusetts Institute of Technology | Tous droits réservés</p>
+        <p><a href="#">Terms of use  |<a href="#">Stanford,California 94305</p>
+    </footer>
+
+    <script>
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

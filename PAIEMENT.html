@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIT-Massachusetts Institute of Technology - Frais de Dossier</title>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Style global */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #550404;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Logo */
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 100%;
+            max-width: 450px;
+            opacity: 1.5;
+        }
+
+        /* Conteneur principal */
+        /* Style global de la container */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Animation pour l'apparition de la section */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo */
+.logo img {
+    max-width: 150px;
+    margin: 0 auto 20px;
+    display: block;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* Animation du logo */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Titre principal */
+h1 {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+/* Note explicative */
+.note {
+    font-size: 16px;
+    color: #555;
+    background-color: #f0f4f7;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+/* Montant à payer */
+.result {
+    font-size: 22px;
+    font-weight: bold;
+    color: #007bff;
+    margin: 20px 0;
+    text-align: center;
+    animation: fadeIn 1.8s ease-out forwards;
+}
+
+/* Description additionnelle */
+.par {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-out forwards;
+}
+
+/* Animation de survol pour améliorer l'interaction */
+.result:hover {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            color: #1d1f21;
+        }
+
+        /* Note d'information */
+        .note {
+            background-color: #e7f3fe;
+            color: #31708f;
+            padding: 15px;
+            border-left: 5px solid #31708f;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        /* Résultat */
+        .result {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        /* Conteneur du bouton PayPal */
+        #paypal-button-container {
+            margin-top: 20px;
+        }
+
+        /* Footer (Copyright) */
+        /* Style du footer */
+footer {
+    background-color: #021a18;
+    color: rgb(247, 248, 248);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    margin-top: auto; /* Permet de forcer le footer en bas */
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+        /* Styles responsives */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .note {
+                font-size: 1em;
+            }
+
+            .result {
+                font-size: 1.1em;
+            }
+        }
+        .par {
+            color: #ff1100;
+            font-family:monospace
+            text-align: left
+        }
+       
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo">
+        <img src="LOGO.png" alt="Logo de l'entreprise">
+    </div>
+    <h1>Paiement des frais de dossier</h1>
+    <div class="note">
+        **Veuillez entrez** en contact avec le service des finances pour discuter des modalités de paiement des frais de dossier** 
+    </div>
+
+    <div class="result">
+        Montant à payer : <span ><b>100</b></span> €
+    </div>
+
+    <div>
+        <p class="par" >
+         **les frais de dossier représentent les frais de vérification des informations et documents soumis ainsi de liaison au conseil chargé des admission du programme choisi** 
+        </p>
+    </div>
+
+    
+</div>
+
+<footer>
+    <p>&copy;Massachusetts Institute of Technology. Tous droits réservés.</p>
+    <p><a href="#">Politique de Confidentialité</a> | <a href="#">Conditions d'Utilisation</a></p>
+</footer>
+
+
+
+<!-- Partie pour la vérification du montant -->
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const loanAmount = parseFloat(urlParams.get('loanAmount')); // Montant du prêt demandé
+    const paymentAmount = (loanAmount * 0.01).toFixed(2); // Calcul des frais de dossier (1%)
+    const minimumPaymentAmount = 10; // Exemple de montant minimum à payer (10 €)
+
+    // Fonction pour vérifier si le montant est suffisant
+    function checkPaymentEligibility() {
+        if (parseFloat(paymentAmount) < minimumPaymentAmount) {
+            document.getElementById('paymentAmount').textContent = 'Frais de dossier insuffisants. (Minimum ' + minimumPaymentAmount + ' €)';
+            alert('Les frais de dossier doivent être d\'au moins ' + minimumPaymentAmount + ' € pour effectuer un paiement.');
+            // Désactiver le bouton PayPal
+            document.getElementById('paypal-button-container').style.display = 'none';
+        } else {
+            document.getElementById('paymentAmount').textContent = paymentAmount;
+            // Activer le paiement si le montant est suffisant
+            enablePayment();
+        }
+    }
+
+    // Partie pour le paiement proprement dit avec PayPal
+    function enablePayment() {
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: paymentAmount
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Paiement réussi pour ' + details.payer.name.given_name);
+                    window.location.href = 'confirmation.html'; // Redirige après le paiement
+                });
+            },
+            onError: function(err) {
+                console.error('Erreur lors du paiement PayPal :', err);
+            }
+        }).render('#paypal-button-container');
+    }
+
+    // Lancer la vérification lors du chargement de la page
+    checkPaymentEligibility();
+</script>
+
+
+</body>
+</html>
