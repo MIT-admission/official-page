@@ -417,221 +417,218 @@ button:hover {
 </head>
 <body class="item">
 
-<div class="container" id="formContainer">
-    <div class="logo">
-        <img src="logo.png" alt="Logo de l'entreprise"> 
-    </div>
-    <div class="progress-bar">
-        <div id="progress"></div>
-        <span style="--step: 0;">1</span>
-    </div>
-
-    <h2>Formulaire de Demande d'admission - Étape <span id="stepNumber">1</span></h2>
+    <div class="container" id="formContainer">
+        <div class="logo">
+            <img src="logo.png" alt="Company Logo"> 
+        </div>
+        <div class="progress-bar">
+            <div id="progress"></div>
+            <span style="--step: 0;">1</span>
+        </div>
     
-    <form id="admissionForm" onsubmit="handleFormSubmit(event)">
-
-        <!-- Étape 1: Informations Personnelles -->
-        <div class="form-step" id="step-1" style="display:block;">
-            <h2>Étape 1: Informations Personnelles</h2>
-            <div class="note">**Veuillez vous assurer de remplir le formulaire avec vos informations exactes**</div>
-            <div class="form-group">
-                <label for="nom">Nom Complet</label>
-                <input type="text" id="nom" name="nom" required>
+        <h2>Admission Application Form - Step <span id="stepNumber">1</span></h2>
+        
+        <form id="admissionForm" onsubmit="handleFormSubmit(event)">
+    
+            <!-- Step 1: Personal Information -->
+            <div class="form-step" id="step-1" style="display:block;">
+                <h2>Step 1: Personal Information</h2>
+                <div class="note">**Please ensure that you fill in the form with your correct information**</div>
+                <div class="form-group">
+                    <label for="nom">Full Name</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="dateNaissance">Date of Birth</label>
+                    <input type="date" id="dateNaissance" name="dateNaissance" required>
+                </div>
+                <div class="form-group">
+                    <label for="sexe">Gender</label>
+                    <select id="sexe" name="sexe" required>
+                        <option value="">Select</option>
+                        <option value="homme">Male</option>
+                        <option value="femme">Female</option>
+                        <option value="autre">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nationalite">Nationality</label>
+                    <input type="text" id="nationalite" name="nationalite" required>
+                </div>
+                <div class="form-group">
+                    <label for="adresse">Postal Address</label>
+                    <input type="text" id="adresse" name="adresse" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Phone</label>
+                    <input type="tel" id="telephone" name="telephone" required>
+                </div>
+                <button type="button" class="btn-next" onclick="nextStep(1)">Next</button>
             </div>
-            <div class="form-group">
-                <label for="dateNaissance">Date de Naissance</label>
-                <input type="date" id="dateNaissance" name="dateNaissance" required>
+    
+            <!-- Step 2: Academic Background -->
+            <div class="form-step" id="step-2">
+                <h2>Step 2: Academic Background</h2>
+                <div class="form-group">
+                    <label for="etablissement">Current Institution or Institution of Last Degree Obtained</label>
+                    <input type="text" id="etablissement" name="etablissement" required>
+                </div>
+                <div class="form-group">
+                    <label for="diplome">Degree Intended or Obtained</label>
+                    <select required>
+                        <option value="">Select</option>
+                        <option value="baccalauréat">Baccalaureate</option>
+                        <option value="licence">Bachelor's Degree</option>
+                        <option value="master">Master's Degree</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="releves">Transcripts for the Last Two Years (Clear and Visible Document)</label>
+                    <input type="file" id="releves" name="releves" accept=".pdf,.doc,.docx" required>
+                </div>
+                <button type="button" class="btn-prev" onclick="prevStep(2)">Back</button>
+                <button type="button" class="btn-next" onclick="nextStep(2)">Next</button>
             </div>
-            <div class="form-group">
-                <label for="sexe">Sexe</label>
-                <select id="sexe" name="sexe" required>
-                    <option value="">Sélectionner</option>
-                    <option value="homme">Homme</option>
-                    <option value="femme">Femme</option>
-                    <option value="autre">Autre</option>
+    
+            <!-- Step 3: Experience and Activities -->
+            <div class="form-step" id="step-3">
+                <h2>Step 3: Experience and Extracurricular Activities</h2>
+                <div class="form-group">
+                    <label for="experience">Professional Experience</label>
+                    <textarea id="experience" name="experience" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="activites">Extracurricular Activities</label>
+                    <textarea id="activites" name="activites" rows="4" required></textarea>
+                </div>
+                <button type="button" class="btn-prev" onclick="prevStep(3)">Back</button>
+                <button type="button" class="btn-next" onclick="nextStep(3)">Next</button>
+            </div>
+    
+            <!-- Step 4: Language Skills -->
+            <div class="form-step" id="step-4">
+                <h2>Step 4: Language Skills</h2>
+                <div class="form-group">
+                    <label for="langues">Languages Spoken</label>
+                    <textarea id="langues" name="langues" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="certifLangue">Language Certificate (e.g., TOEFL, IELTS) Optional</label>
+                    <input type="file" id="certifLangue" name="certifLangue" accept=".pdf,.doc,.docx">
+                </div>
+                 <div class="form-group">
+                    <label for="recommandation">Recommendation Letter</label>
+                    <input type="file" id="recommandation" name="recommandation" accept=".pdf,.doc,.docx" required>
+                </div>
+                <button type="button" class="btn-prev" onclick="prevStep(4)">Back</button>
+                <button type="button" class="btn-next" onclick="nextStep(4)">Next</button>
+            </div>
+    
+            <!-- Step 5: Recommendations -->
+            <div class="form-step" id="step-5">
+                <h2>Step 5: Desired Program and Faculty Selection</h2>
+                <!-- Faculty Selection -->
+                <label for="faculte">Choose a Faculty:</label>
+                <select id="faculte" name="faculte" required>
+                  <option value="">--Select a Faculty--</option>
+                  <option value="sciences-humaines">Faculty of Humanities and Social Sciences</option>
+                  <option value="sciences-naturelles">Faculty of Natural Sciences</option>
+                  <option value="ingenierie">Faculty of Engineering</option>
+                  <option value="business">Faculty of Business (MIT Sloan School of Management)</option>
+                  <option value="architecture">Faculty of Architecture and Urban Planning</option>
+                  <option value="sciences-computationales">Faculty of Computational and Mathematical Sciences</option>
+                  <option value="media-arts-sciences">Faculty of Media Arts and Sciences</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <label for="nationalite">Nationalité</label>
-                <input type="text" id="nationalite" name="nationalite" required>
-            </div>
-            <div class="form-group">
-                <label for="adresse">Adresse Postale</label>
-                <input type="text" id="adresse" name="adresse" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="telephone">Téléphone</label>
-                <input type="tel" id="telephone" name="telephone" required>
-            </div>
-            <button type="button" class="btn-next" onclick="nextStep(1)">Suivant</button>
-        </div>
-
-        <!-- Étape 2: Parcours Académique -->
-        <div class="form-step" id="step-2">
-            <h2>Étape 2: Parcours Académique</h2>
-            <div class="form-group">
-                <label for="etablissement">Établissement Actuel ou Établissement du dernier diplôme obtenu
-                </label>
-                <input type="text" id="etablissement" name="etablissement" required>
-            </div>
-            <div class="form-group">
-                <label for="diplome">Diplôme Visé ou obtenu</label>
-                <select required>
-                    <option value="">sélectionner</option>
-                    <option value="baccalauréat">BACCALAUREAT</option>
-                    <option value="licence">LICENCE</option>
-                    <option value="master">MASTER</option>
-
+    
+                <!-- Program Selection -->
+                <label for="programme">Choose a Program:</label>
+                <select id="programme" name="programme" required>
+                  <option value="">--Select a Program--</option>
+    
+                  <!-- Humanities and Social Sciences Programs -->
+                  <optgroup label="Humanities and Social Sciences">
+                    <option value="economics">Economics</option>
+                    <option value="linguistics">Linguistics</option>
+                    <option value="philosophy">Philosophy</option>
+                    <option value="political-science">Political Science</option>
+                    <option value="sociology">Sociology</option>
+                    <option value="psychology">Psychology</option>
+                  </optgroup>
+    
+                  <!-- Natural Sciences Programs -->
+                  <optgroup label="Natural Sciences">
+                    <option value="biology">Biology</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="physics">Physics</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="earth-sciences">Earth Sciences</option>
+                    <option value="material-science">Materials Science</option>
+                  </optgroup>
+    
+                  <!-- Engineering Programs -->
+                  <optgroup label="Engineering">
+                    <option value="electrical-engineering">Electrical Engineering</option>
+                    <option value="mechanical-engineering">Mechanical Engineering</option>
+                    <option value="civil-engineering">Civil Engineering</option>
+                    <option value="biomedical-engineering">Biomedical Engineering</option>
+                    <option value="aerospace-engineering">Aerospace Engineering</option>
+                    <option value="computer-science">Computer Science</option>
+                  </optgroup>
+    
+                  <!-- Business Programs -->
+                  <optgroup label="Business">
+                    <option value="mba">Master of Business Administration (MBA)</option>
+                    <option value="msx">Master of Science in Management (MSx)</option>
+                    <option value="phd-business">PhD in Management</option>
+                    <option value="business-analytics">Business Analytics</option>
+                  </optgroup>
+    
+                  <!-- Architecture and Urban Planning Programs -->
+                  <optgroup label="Architecture and Urban Planning">
+                    <option value="architecture">Architecture</option>
+                    <option value="urban-studies">Urban Studies</option>
+                    <option value="planning">Urban Planning</option>
+                  </optgroup>
+    
+                  <!-- Computational and Mathematical Sciences Programs -->
+                  <optgroup label="Computational and Mathematical Sciences">
+                    <option value="computer-science">Computer Science</option>
+                    <option value="data-science">Data Science</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="machine-learning">Machine Learning</option>
+                  </optgroup>
+    
+                  <!-- Media Arts and Sciences Programs -->
+                  <optgroup label="Media Arts and Sciences">
+                    <option value="media-arts">Media Arts</option>
+                    <option value="artificial-intelligence">Artificial Intelligence</option>
+                    <option value="human-computer-interaction">Human-Computer Interaction</option>
+                  </optgroup>
                 </select>
+    
+                <button type="button" class="btn-prev" onclick="prevStep(5)">Back</button>
+                <button type="submit" class="btn-submit">Submit Application</button>
             </div>
-            <div class="form-group">
-                <label for="releves">Relevés de Notes des deux dernières années (Document clair et visible)</label>
-                <input type="file" id="releves" name="releves" accept=".pdf,.doc,.docx" required>
-            </div>
-            <button type="button" class="btn-prev" onclick="prevStep(2)">Retour</button>
-            <button type="button" class="btn-next" onclick="nextStep(2)">Suivant</button>
-        </div>
-
-        <!-- Étape 3: Expérience et Activités -->
-        <div class="form-step" id="step-3">
-            <h2>Étape 3: Expérience et Activités Parascolaires</h2>
-            <div class="form-group">
-                <label for="experience">Expérience Professionnelle</label>
-                <textarea id="experience" name="experience" rows="4"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="activites">Activités Extrascolaires</label>
-                <textarea id="activites" name="activites" rows="4" required></textarea>
-            </div>
-            <button type="button" class="btn-prev" onclick="prevStep(3)">Retour</button>
-            <button type="button" class="btn-next" onclick="nextStep(3)">Suivant</button>
-        </div>
-
-        <!-- Étape 4: Compétences Linguistiques -->
-        <div class="form-step" id="step-4">
-            <h2>Étape 4: Compétences Linguistiques</h2>
-            <div class="form-group">
-                <label for="langues">Langues Maîtrisées</label>
-                <textarea id="langues" name="langues" rows="4" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="certifLangue">Certificat de Langue (ex: TOEFL, IELTS)  Facultatif</label>
-                <input type="file" id="certifLangue" name="certifLangue" accept=".pdf,.doc,.docx">
-            </div>
-             <div class="form-group">
-                <label for="recommandation">Lettre de Recommandation</label>
-                <input type="file" id="recommandation" name="recommandation" accept=".pdf,.doc,.docx" required>
-            </div>
-            <button type="button" class="btn-prev" onclick="prevStep(4)">Retour</button>
-            <button type="button" class="btn-next" onclick="nextStep(4)">Suivant</button>
-        </div>
-
-        <!-- Étape 5: Recommandations -->
-        <div class="form-step" id="step-5">
-            <h2>Étape 5: Choix du programme et de la faculté souhaité</h2>
-           <!-- Sélection de la Faculté -->
-<label for="faculte">Choisissez une faculté :</label>
-<select id="faculte" name="faculte" required>
-  <option value="">--Sélectionnez une faculté--</option>
-  <option value="sciences-humaines">Faculté des Sciences Humaines et Sociales</option>
-  <option value="sciences-naturelles">Faculté des Sciences Naturelles</option>
-  <option value="ingenierie">Faculté d'Ingénierie</option>
-  <option value="business">Faculté de Business (MIT Sloan School of Management)</option>
-  <option value="architecture">Faculté d'Architecture et d'Urbanisme</option>
-  <option value="sciences-computationales">Faculté des Sciences Computationnelles et Mathématiques</option>
-  <option value="media-arts-sciences">Faculté des Arts et Sciences des Médias</option>
-</select>
-
-<!-- Sélection du Programme -->
-<label for="programme">Choisissez un programme :</label>
-<select id="programme" name="programme" required>
-  <option value="">--Sélectionnez un programme--</option>
-
-  <!-- Programmes des Sciences Humaines et Sociales -->
-  <optgroup label="Sciences Humaines et Sociales">
-    <option value="economics">Économie</option>
-    <option value="linguistics">Linguistique</option>
-    <option value="philosophy">Philosophie</option>
-    <option value="political-science">Science Politique</option>
-    <option value="sociology">Sociologie</option>
-    <option value="psychology">Psychologie</option>
-  </optgroup>
-
-  <!-- Programmes des Sciences Naturelles -->
-  <optgroup label="Sciences Naturelles">
-    <option value="biology">Biologie</option>
-    <option value="chemistry">Chimie</option>
-    <option value="physics">Physique</option>
-    <option value="mathematics">Mathématiques</option>
-    <option value="earth-sciences">Sciences de la Terre</option>
-    <option value="material-science">Science des Matériaux</option>
-  </optgroup>
-
-  <!-- Programmes d'Ingénierie -->
-  <optgroup label="Ingénierie">
-    <option value="electrical-engineering">Génie Électrique</option>
-    <option value="mechanical-engineering">Génie Mécanique</option>
-    <option value="civil-engineering">Génie Civil</option>
-    <option value="biomedical-engineering">Bioingénierie</option>
-    <option value="aerospace-engineering">Génie Aérospatial</option>
-    <option value="computer-science">Informatique</option>
-  </optgroup>
-
-  <!-- Programmes de Business -->
-  <optgroup label="Business">
-    <option value="mba">Master en Administration des Affaires (MBA)</option>
-    <option value="msx">Master of Science in Management (MSx)</option>
-    <option value="phd-business">Doctorat en Management</option>
-    <option value="business-analytics">Business Analytics</option>
-  </optgroup>
-
-  <!-- Programmes d'Architecture et d'Urbanisme -->
-  <optgroup label="Architecture et Urbanisme">
-    <option value="architecture">Architecture</option>
-    <option value="urban-studies">Études Urbaines</option>
-    <option value="planning">Planification Urbaine</option>
-  </optgroup>
-
-  <!-- Programmes des Sciences Computationnelles et Mathématiques -->
-  <optgroup label="Sciences Computationnelles et Mathématiques">
-    <option value="computer-science">Informatique</option>
-    <option value="artificial-intelligence">Intelligence Artificielle</option>
-    <option value="data-science">Science des Données</option>
-    <option value="mathematics">Mathématiques</option>
-  </optgroup>
-
-  <!-- Programmes des Arts et Sciences des Médias -->
-  <optgroup label="Arts et Sciences des Médias">
-    <option value="media-arts-science">Arts et Sciences des Médias</option>
-    <option value="interactive-technology">Technologies Interactives</option>
-  </optgroup>
-</select>
-            </select>
-            <button type="button" class="btn-prev" onclick="prevStep(5)">Retour</button>
-            <button type="submit" class="btn-submit" onclick="paiement.html">soumettre et continuer</button>
-        </div>
-       
-
-       
-    </form>
-</div>
-
-<!-- Message de succès -->
+        </form>
+    </div>
+    <!-- Success Message -->
 <div class="success-message" id="successMessage">
     <div class="icon-check">✔️</div>
-    <h1>Succès !</h1>
-    <p>Votre demande a été soumise avec succès.</p>
-    <button class="continue-btn" id="continueButton">Continuer</button>
+    <h1>Success!</h1>
+    <p>Your application has been successfully submitted.</p>
+    <button class="continue-btn" id="continueButton">Continue</button>
 </div>
 
 <footer>
-    <p>&copy; 2024 MIT-Massachusetts Institute of Technology. Tous droits réservés.</p>
-    <p><a href="#">Politique de Confidentialité</a> | <a href="#">Conditions d'Utilisation</a></p>
+    <p>&copy; 2024 MIT-Massachusetts Institute of Technology. All rights reserved.</p>
+    <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
 </footer>
+
+
 
 <script>
     function handleFormSubmit(event) {
